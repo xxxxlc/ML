@@ -8,7 +8,7 @@
 
 ## 如何学习使用Git
 
-基本部分：[Git](.\preparation\Git.md)
+基本部分：[Git](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Git.md)
 
 
 
