@@ -4,13 +4,24 @@
 
 
 
+## 前期准备
+
+:bowtie:（如果有不到之处，欢迎进行补充，这是一次小组作业，随时可以进行交流）
+
+基本部分：
+
+-  [Git](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Git.md)
+- [Markdown语法](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Markdown语法.md)
+- [Pycharm](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Pycharm 使用与安装.md)
 
 
-## 如何学习使用Git
 
-基本部分：[Git](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Git.md)
+## 项目任务列表
 
-
+- [ ] 选题
+- [ ] 生成或者寻找数据集
+- [ ] 设计机器学习算法
+- [ ] 完成报告
 
 
 

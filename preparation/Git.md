@@ -42,3 +42,15 @@ git init
 git remote add origin https://github.com/xxxxlc/Group-of-ML.git
 ```
 
+
+
+## 在Github上利用issue提问
+
+<img src="Git/image-20210928225622956.png" alt="image-20210928225622956" style="zoom: 67%;" />
+
+
+
+如果在代码中遇到问题，小组成员可以通过Github的issue提出问题，其他成员可以对其进行回答与修改
+
+（在微信群也可，:laughing: ，不过利用issue更有开发的感觉）
+

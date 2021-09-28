@@ -2,5 +2,9 @@
 
 
 
-[列表 | Learning-Markdown (Markdown 入门参考) (xianbai.me)](https://xianbai.me/learn-md/article/syntax/lists.html)
+[Markdown 官方教程](https://markdown.com.cn/)
+
+
+
+**Markdown** 中生动形象的表情包：[Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
 
