@@ -12,7 +12,7 @@
 
 -  [Git](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Git.md)
 - [Markdown语法](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Markdown语法.md)
-- [Pycharm](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Pycharm 使用与安装.md)
+- [Pycharm](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Pycharm使用与安装.md)
 
 
 
