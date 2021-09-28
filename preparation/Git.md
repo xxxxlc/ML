@@ -54,3 +54,13 @@ git remote add origin https://github.com/xxxxlc/Group-of-ML.git
 
 （在微信群也可，:laughing: ，不过利用issue更有开发的感觉）
 
+
+
+
+
+## 如何删除Github上的.idea文件夹
+
+什么是.idea文件夹：[为Git仓库里的.idea文件夹正名 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/38348372)
+
+上传时不上传.idea文件夹：[怎么从git仓库中删除.idea文件夹 - 开发技术 - 亿速云 (yisu.com)](https://www.yisu.com/zixun/372669.html)
+
