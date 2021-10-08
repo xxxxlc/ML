@@ -64,3 +64,4 @@ git remote add origin https://github.com/xxxxlc/Group-of-ML.git
 
 上传时不上传.idea文件夹：[怎么从git仓库中删除.idea文件夹 - 开发技术 - 亿速云 (yisu.com)](https://www.yisu.com/zixun/372669.html)
 
+利用Pycharm自带工具进行.gitignore文件的配置：[PyCharm/IDEA等工具使用git时设置不要提交系统文件，或者忽略提交文件夹_风闻有BUG-CSDN博客](https://blog.csdn.net/luhuibo318/article/details/89742169)
