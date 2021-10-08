@@ -14,7 +14,7 @@
 - [Markdown语法](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Markdown语法.md)
 - [Pycharm](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Pycharm使用与安装.md)
 
-
+平时学习笔记存放在放在 learning note 中，需要时可以进行查看或者修改
 
 ## 项目任务列表
 
