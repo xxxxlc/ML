@@ -14,7 +14,7 @@
 - [Markdown语法](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Markdown语法.md)
 - [Pycharm](https://github.com/xxxxlc/Group-of-ML/blob/test/preparation/Pycharm使用与安装.md)
 
-
+git rm -r --cached .
 
 ## 项目任务列表
 
