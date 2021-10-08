@@ -42,6 +42,46 @@ git init
 git remote add origin https://github.com/xxxxlc/Group-of-ML.git
 ```
 
+拉取远程仓库的**main**分支到本地
+
+```
+git pull origin main
+```
+
+创建自己的分支
+
+```
+git checkout -b "your branch name"
+```
+
+提交该分支到远程仓库
+
+```
+git push origin "your branch name"
+```
+
+
+
+### git提交命令
+
+将所有修改的文件存入暂存区
+
+```
+git add .
+```
+
+提交本地代码到分支
+
+```
+git commit -m "xxxxlc"
+```
+
+将本地代码提交到远程分支
+
+```
+git push origin your branch
+```
+
 
 
 ## 在Github上利用issue提问
@@ -58,7 +98,15 @@ git remote add origin https://github.com/xxxxlc/Group-of-ML.git
 
 
 
-## 如何删除Github上的.idea文件夹
+## 在git提交时不能提交的文件
+
+- 尽量不要提交图片多的说明文档，拉取时会比较麻烦，而且图片的加载很慢
+- 如果使用pycharm编辑器，不要提交pychram中的.idea文件夹，具体方法见下
+- 如果使用vscode编辑器，不要提交setting，.vscode等设置文件，如果提交设置文件，其他人设置文件与你不同，拉取时会很麻烦
+
+
+
+**如何删除Github上的.idea文件夹**
 
 什么是.idea文件夹：[为Git仓库里的.idea文件夹正名 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/38348372)
 
