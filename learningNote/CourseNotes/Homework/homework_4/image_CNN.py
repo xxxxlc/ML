@@ -82,10 +82,21 @@ class GenderPicCNN:
 
         model.summary()
 
+        METRICS = [
+            keras.metrics.TruePositives(name='tp'),
+            keras.metrics.FalsePositives(name='fp'),
+            keras.metrics.TrueNegatives(name='tn'),
+            keras.metrics.FalseNegatives(name='fn'),
+            keras.metrics.BinaryAccuracy(name='accuracy'),
+            keras.metrics.Precision(name='precision'),
+            keras.metrics.Recall(name='recall'),
+            keras.metrics.AUC(name='auc')
+        ]
+
         model.compile(
             loss="categorical_crossentropy",
             optimizer="adam",
-            metrics=["accuracy"]
+            metrics=METRICS
         )
 
         return model
@@ -95,9 +106,11 @@ class GenderPicCNN:
                 self.train_images,
                 self.train_labels,
                 batch_size=128,
-                epochs=100,
+                epochs=20,
                 validation_split=0.1
             )
+
+        self.plot_metrics(history)
 
         score = model.evaluate(self.test_images, self.test_labels, verbose=2)
 
@@ -108,6 +121,23 @@ class GenderPicCNN:
         self.save_model(model)
 
         return model
+
+    def plot_metrics(self, history):
+        metrics = ['loss', 'auc', 'precision', 'recall']
+        for n, metric in enumerate(metrics):
+            name = metric
+            plt.subplot(2, 2, n + 1)
+            plt.plot(history.epoch, history.history[metric], label='Train')
+            plt.plot(history.epoch, history.history['val_'+metric], linestyle='--', label='Val')
+            plt.xlabel('Epoch')
+            plt.ylabel(name)
+            if metric == 'loss':
+                plt.ylim([0, plt.ylim()[1]])
+            elif metric == 'auc':
+                plt.ylim([0, 1])
+            else:
+                plt.ylim([0, 1])
+            plt.legend()
 
     def model_predict(self, test_image, test_label):
         prediction_results = self.model.predict(test_image)
@@ -153,7 +183,7 @@ if __name__ == "__main__":
     image = ImageLoader(imagefilename, genderfilename, [M, F])
 
     genderCNN = GenderPicCNN(image.img_array_standard[:4000], image.img_array_standard[4000:5200],
-                             [3500, 1000], [500, 200], 2,
-                             './modelsave/image_cnn_model2021-10-22-17-34.h5')
+                             [3500, 1000], [500, 200], 2)
+                             # './modelsave/image_cnn_model2021-10-22-17-34.h5')
     # genderCNN.model_predict()
 
