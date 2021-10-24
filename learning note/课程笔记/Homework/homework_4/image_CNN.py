@@ -91,13 +91,13 @@ class GenderPicCNN:
         return model
 
     def train(self, model):
-        model.fit(
-            self.train_images,
-            self.train_labels,
-            batch_size=128,
-            epochs=100,
-            validation_split=0.1
-        )
+        history = model.fit(
+                self.train_images,
+                self.train_labels,
+                batch_size=128,
+                epochs=100,
+                validation_split=0.1
+            )
 
         score = model.evaluate(self.test_images, self.test_labels, verbose=2)
 
