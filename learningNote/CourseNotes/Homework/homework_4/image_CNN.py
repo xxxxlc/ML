@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 
 from tensorflow import keras
 from tensorflow.keras import layers
+from keras.callbacks import ModelCheckpoint
 from data_loader import ImageLoader
 
 
@@ -36,9 +37,9 @@ class GenderPicCNN:
             self.model.summary()
 
         predict_num = 333
-        self.model_predict(self.test_images[predict_num:predict_num + 1],
-                           self.test_labels[predict_num:predict_num + 1])
-        # self.predict()
+        self.model_predict_singel_image(self.test_images[predict_num:predict_num + 1],
+                                        self.test_labels[predict_num:predict_num + 1])
+        self.model_predict(testnum)
 
     def datasort(self, img_male, img_female, trainnum, testnum):
         self.train_images = np.array(list(np.concatenate((img_male[0:trainnum[0], 0], img_female[0:trainnum[1], 0]))))
@@ -76,6 +77,8 @@ class GenderPicCNN:
                 layers.Conv2D(16, kernel_size=(3, 3), activation="relu"),
                 layers.MaxPool2D(pool_size=(2, 2)),
                 layers.Flatten(),
+                # layers.Dense(128, activation="softmax"),
+                # layers.Dense(32, activation='softmax'),
                 layers.Dense(numclasses, activation="softmax")
             ]
         )
@@ -101,6 +104,7 @@ class GenderPicCNN:
             # keras.metrics.AUC(name='auc')
         ]
 
+        # adma = keras.optimizers.Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epslion=1e-7, decay=0, amsgrad=False)
         model.compile(
             loss="categorical_crossentropy",
             optimizer="adam",
@@ -110,15 +114,26 @@ class GenderPicCNN:
         return model
 
     def train(self, model):
+
+        checkpoint = ModelCheckpoint(
+                filepath=self.h5_file_name(),
+                monitor='val_loss',
+                verbose=1,
+                save_best_only=True,
+                mode='min'
+        )
+
         history = model.fit(
                 self.train_images,
                 self.train_labels,
                 batch_size=128,
-                epochs=20,
+                epochs=25,
                 # 从测试集中划分多少到训练集
                 # validation_split=0.1
                 # 测试集
-                validation_data=(self.test_images, self.test_labels)
+                validation_data=(self.test_images, self.test_labels),
+                shuffle=True,
+                callbacks=[checkpoint]
             )
 
         self.plot_metrics(history)
@@ -150,7 +165,7 @@ class GenderPicCNN:
                 plt.ylim([0, 1])
             plt.legend()
 
-    def model_predict(self, test_image, test_label):
+    def model_predict_singel_image(self, test_image, test_label):
         prediction_results = self.model.predict(test_image)
         predicted_index = np.argmax(prediction_results)
         test_label = np.argmax(test_label)
@@ -177,6 +192,10 @@ class GenderPicCNN:
         plt.axis('off')
         plt.show()
 
+    def h5_file_name(self):
+        nowTime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
+        modelsave_path = "./modelsave/"
+        return modelsave_path + 'image_cnn_model_callback_best' + nowTime + '.h5'
 
     def save_model(self, model):
         nowTime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
@@ -185,6 +204,24 @@ class GenderPicCNN:
             os.makedirs(modelsave_path)
         model.save(modelsave_path + 'image_cnn_model' + nowTime + '.h5')
 
+    def model_predict(self, testnum):
+        prediction_results = self.model.predict(self.test_images)
+        prediction_index = np.argmax(prediction_results, axis=1)
+        test_label_index = np.argmax(self.test_labels, axis=1)
+        true_predict_num = (sum(prediction_index == test_label_index))
+        true_predict_rate = true_predict_num / self.test_labels.shape[0]
+        true_predict_male_num = (sum(prediction_index[0:testnum[0]] == test_label_index[0:testnum[0]]))
+        true_predict_female_num = (sum(prediction_index[testnum[0]:] == test_label_index[testnum[0]:]))
+        true_predict_male_rate = true_predict_male_num / (testnum[0])
+        true_predict_female_rate = true_predict_female_num / testnum[1]
+
+        print("---------------------------\n")
+        print('true_predict_num: ', true_predict_num)
+        print('true_predict_rate: ', true_predict_rate)
+        print('true_predict_male_num: ', true_predict_male_num)
+        print('true_predict_female_num: ', true_predict_female_num)
+        print('true_predict_male_rate: ', true_predict_male_rate)
+        print('true_predict_female_rate: ', true_predict_female_rate)
 
 if __name__ == "__main__":
     imagefilename = "./lfw-deepfunneled/"
