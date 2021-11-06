@@ -35,10 +35,10 @@ class GenderPicCNN:
             self.model = keras.models.load_model(load_model)
             self.model.summary()
 
-        predict_num = 695
+        predict_num = 333
         self.model_predict(self.test_images[predict_num:predict_num + 1],
                            self.test_labels[predict_num:predict_num + 1])
-        print(self.model.history)
+        # self.predict()
 
     def datasort(self, img_male, img_female, trainnum, testnum):
         self.train_images = np.array(list(np.concatenate((img_male[0:trainnum[0], 0], img_female[0:trainnum[1], 0]))))
@@ -83,14 +83,22 @@ class GenderPicCNN:
         model.summary()
 
         METRICS = [
-            keras.metrics.TruePositives(name='tp'),
-            keras.metrics.FalsePositives(name='fp'),
-            keras.metrics.TrueNegatives(name='tn'),
-            keras.metrics.FalseNegatives(name='fn'),
+            # Calculates the number of true positives
+            # keras.metrics.TruePositives(name='tp'),
+            # Calculates the number of false positives
+            # keras.metrics.FalsePositives(name='fp'),
+            # Calculates the number of true negatives.
+            # keras.metrics.TrueNegatives(name='tn'),
+            # Calculates the number of false negatives.
+            # keras.metrics.FalseNegatives(name='fn'),
+            # Calculates how often predictions match binary labels.
             keras.metrics.BinaryAccuracy(name='accuracy'),
+            # Computes the precision of the predictions with respect to the labels.
             keras.metrics.Precision(name='precision'),
+            # Computes the recall of the predictions with respect to the labels.
             keras.metrics.Recall(name='recall'),
-            keras.metrics.AUC(name='auc')
+            # Approximates the AUC (Area under the curve) of the ROC or PR curves.
+            # keras.metrics.AUC(name='auc')
         ]
 
         model.compile(
@@ -107,7 +115,10 @@ class GenderPicCNN:
                 self.train_labels,
                 batch_size=128,
                 epochs=20,
-                validation_split=0.1
+                # 从测试集中划分多少到训练集
+                # validation_split=0.1
+                # 测试集
+                validation_data=(self.test_images, self.test_labels)
             )
 
         self.plot_metrics(history)
@@ -123,7 +134,7 @@ class GenderPicCNN:
         return model
 
     def plot_metrics(self, history):
-        metrics = ['loss', 'auc', 'precision', 'recall']
+        metrics = ['loss', 'accuracy', 'precision', 'recall']
         for n, metric in enumerate(metrics):
             name = metric
             plt.subplot(2, 2, n + 1)
@@ -184,6 +195,6 @@ if __name__ == "__main__":
 
     genderCNN = GenderPicCNN(image.img_array_standard[:4000], image.img_array_standard[4000:5200],
                              [3500, 1000], [500, 200], 2)
-                             # './modelsave/image_cnn_model2021-10-22-17-34.h5')
+                             # './modelsave/image_cnn_model2021-10-30-19-48.h5')
     # genderCNN.model_predict()
 
