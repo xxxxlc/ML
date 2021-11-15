@@ -14,11 +14,19 @@ PPT的练习代码会定时更新，大家有问题可以进行讨论，按照�
 
 ## 作业
 
-第一次作业
+### 第一次作业
 
-- 下载图片并翻转
+- [下载图片并翻转](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Homework/homework_1)
+- [合并文件](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Homework/homework_2)
+- [画图](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Homework/homework_3)
+- [人脸识别](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Homework/homework_4)
 
 
+
+### 课程实践
+
+- [人脸识别](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Homework/homework_4)
+- [肺炎影响识别](https://github.com/xxxxlc/Group-of-ML/tree/xxxxlc/learningNote/CourseNotes/Example/chest-xray-pneumonia)
 
 
 
